@@ -1,0 +1,22 @@
+{
+  "name": "mary-tq",
+  "version": "1.0.0",
+  "description": "Sistema de Control de Entregas for Mary",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client",
+    "test": "npm test",
+    "test:client": "npm test --prefix client",
+    "test:server": "npm test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "vite-plugin-pwa": "^1.2.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "vue-chartjs": "^5.3.3"
+  }
+}
