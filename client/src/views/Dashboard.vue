@@ -36,7 +36,8 @@ const chartData = ref({
   fechas: [],
   entregas: [],
   abonos: [],
-  entregasAcumulado: []
+  entregasAcumulado: [],
+  abonosAcumulado: []
 })
 
 const chartConfig = computed(() => ({
@@ -61,6 +62,14 @@ const chartConfig = computed(() => ({
       backgroundColor: '#e74c3c',
       borderColor: '#e74c3c',
       data: chartData.value.entregasAcumulado,
+      tension: 0.3,
+      borderDash: [5, 5]
+    },
+    {
+      label: 'Abonos Acumulado',
+      backgroundColor: '#f39c12',
+      borderColor: '#f39c12',
+      data: chartData.value.abonosAcumulado,
       tension: 0.3,
       borderDash: [5, 5]
     }
@@ -118,6 +127,14 @@ onMounted(async () => {
         acumulado += entMap[f]
       }
       return acumulado
+    })
+    
+    let acumuladoAbonos = 0
+    chartData.value.abonosAcumulado = sortedFechas.map(f => {
+      if (aboMap[f]) {
+        acumuladoAbonos += aboMap[f]
+      }
+      return acumuladoAbonos
     })
   } catch (error) {
     console.error('Error loading stats:', error)
