@@ -105,15 +105,7 @@ onMounted(async () => {
     dashboardRes.abonos.forEach(a => fechasConDatos.add(a.fecha))
     const sortedFechas = Array.from(fechasConDatos).sort()
 
-    let lastEntregaValue = 0
-    chartData.value.entregas = sortedFechas.map(f => {
-      if (entMap[f]) {
-        lastEntregaValue = entMap[f]
-        return entMap[f]
-      }
-      return lastEntregaValue
-    })
-    
+    chartData.value.entregas = sortedFechas.map(f => entMap[f] || 0)
     chartData.value.abonos = sortedFechas.map(f => aboMap[f] || 0)
     
     chartData.value.fechas = sortedFechas.map(f => {
